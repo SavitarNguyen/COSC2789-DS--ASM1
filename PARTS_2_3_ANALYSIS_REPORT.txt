@@ -1,0 +1,489 @@
+================================================================================
+DETAILED ANALYSIS REPORT: PARTS 2 AND 3 OF ASSIGNMENT1.IPYNB
+================================================================================
+Generated: 2025-11-13
+Analysis of: /home/user/COSC2789-DS--ASM1/assignment1.ipynb
+
+Cells analyzed:
+- Part 2 (Data Exploration): Cells 23-43 (21 cells total)
+- Part 3 (Missing Values and Outliers Analysis): Cells 44-60 (17 cells total)
+
+================================================================================
+PART 1 CONTEXT: df_cleaned Creation
+================================================================================
+
+Location: Cell 22 (End of Part 1)
+Code:
+    df_cleaned = df.copy()
+    print("Cleaned dataframe saved to 'df_cleaned' variable.")
+
+Part 1 Workflow Summary:
+1. Cell 3: Load data from 'student-data-25s3.csv' into df
+2. Cells 11-14: Detect and convert non-standard missing values (-, X, Na, NA, etc.)
+3. Cell 16: Validate numerical columns against valid ranges
+4. Cell 17: Remove duplicate rows
+5. Cell 22: Create df_cleaned = df.copy() for downstream use
+
+Key Result: df_cleaned contains cleaned data with invalid values converted to NaN
+
+================================================================================
+PART 2: DATA EXPLORATION (Cells 23-43)
+================================================================================
+
+SECTION STRUCTURE:
+- 2.1: Visualization of Individual Variables (3 subsections)
+- 2.2: Exploring Relationships Between Variables (3 subsections)
+- 2.3: Scatter Matrix for Numerical Variables
+
+SUBSECTION ANALYSIS:
+
+2.1.1 - Nominal Variable: Mother's Job (Mjob)
+---------
+What it does: Creates bar chart showing frequency distribution of Mjob
+Code reference: df['Mjob']
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Bar chart with value labels
+Status: Will execute successfully - uses only basic operations on df
+
+
+2.1.2 - Ordinal Variable: Mother's Education (Medu)
+---------
+What it does: Creates bar chart of mother's education levels with labels
+Code: 
+    df['Medu'] = pd.to_numeric(df['Medu'], errors='coerce')
+    medu_counts = df['Medu'].value_counts().sort_index()
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Bar chart with categorical labels: 0-None, 1-Primary, 2-5th-9th, 3-Secondary, 4-Higher
+Status: Will execute successfully
+Note: Uses pd.to_numeric() to ensure Medu is numeric
+
+
+2.1.3 - Numerical Variable: Final Grade (G3)
+---------
+What it does: Creates histogram and box plot for G3
+Code:
+    g3_clean = df['G3'].dropna()
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Note: Explicitly drops NaN values before analysis
+Output: Histogram, box plot, and statistics (mean, median, std, IQR)
+Status: Will execute successfully
+Missing values handling: Handled by .dropna()
+
+
+2.2.1 - Study Time vs Final Grade
+---------
+What it does: Analyzes relationship between study time and final grades
+Key Code:
+    df['studytime'] = pd.to_numeric(df['studytime'], errors='coerce')
+    unique_studytime = sorted(df['studytime'].dropna().unique())
+    label_map = {
+        1: '1 (<2hrs)',
+        2: '2 (2-5hrs)',
+        3: '3 (5-10hrs)',
+        4: '4 (>10hrs)'
+    }
+    labels = [label_map.get(int(i), str(int(i))) for i in unique_studytime]
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Box plots with dynamic labels, mean grades by study time, ANOVA test
+Status: GOOD - Uses dynamic labels based on actual data
+Note: Labels are automatically adjusted based on what values exist in data
+ANOVA Test: F-statistic and p-value reported
+
+
+2.2.2 - Absences vs Final Grade
+---------
+What it does: Analyzes correlation between absences and final grades
+Code:
+    absences_clean = df[['absences', 'G3']].dropna()
+    df['absence_category'] = pd.cut(df['absences'], bins=[-1, 0, 5, 10, 100],
+                                     labels=['0', '1-5', '6-10', '>10'])
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Scatter plot with trend line, box plots by absence category, Pearson correlation
+Status: Will execute successfully
+Missing values: Handled by .dropna() for scatter plot
+
+
+2.2.3 - Mother's Education vs Student's Final Grade
+---------
+What it does: Analyzes relationship between mother's education and student grades
+Code:
+    df['Medu'] = pd.to_numeric(df['Medu'], errors='coerce')
+    medu_grade_data = [df[df['Medu'] == i]['G3'].dropna() ...]
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Box plots and bar plots with mean grades, ANOVA test, Spearman correlation
+Status: Will execute successfully
+
+
+2.3 - Scatter Matrix for Numerical Variables (G1, G2, G3)
+---------
+What it does: Creates scatter matrix showing relationships between period grades
+Code:
+    grade_cols = ['G1', 'G2', 'G3']
+    grade_data = df[grade_cols].dropna()
+    fig = pd.plotting.scatter_matrix(grade_data, ...)
+Data source: Uses ORIGINAL df (NOT df_cleaned)
+Output: Scatter matrix, correlation matrix heatmap, grade statistics
+Status: Will execute successfully
+
+
+================================================================================
+PART 3: ANALYSIS OF MISSING VALUES AND OUTLIERS (Cells 44-60)
+================================================================================
+
+CRITICAL FINDING: Part 3 has DEFENSIVE ERROR HANDLING for df_cleaned
+
+SUBSECTION STRUCTURE:
+- 3.1: Handling Missing Values with Different Techniques (3 approaches)
+- 3.2: Analysis of Outliers (3 questions + detection code)
+- Then transitions to MovieLens dataset (Part 4)
+
+
+3.1.1 - Mean Imputation
+---------
+What it does: Applies mean imputation to all numerical columns
+Code Pattern:
+    try:
+        df_mean = df_cleaned.copy()
+        print("Using df_cleaned for mean imputation")
+    except NameError:
+        df_mean = df.copy()
+        print("df_cleaned not found, using df instead")
+    
+    for col in numerical_cols:
+        if df_mean[col].isnull().any():
+            mean_value = df_mean[col].mean()
+            df_mean[col].fillna(mean_value, inplace=True)
+
+Output: 
+    - Saves to 'student_fix1.csv'
+    - Prints transformation summary for each column
+
+Status: ROBUST - Has fallback handling
+Issue: The try/except will silently use df instead of df_cleaned if it's not available
+Execution: Should work correctly if Part 1 was executed
+
+
+3.1.2 - Median Imputation
+---------
+What it does: Applies median imputation to all numerical columns
+Code: Similar structure to Mean Imputation with try/except for df_cleaned
+Output:
+    - Saves to 'student_fix2.csv'
+    - Prints transformation summary
+
+Status: ROBUST - Has fallback handling
+Issue: Same as above - will fall back to df if df_cleaned unavailable
+
+
+3.1.3 - Comparing Imputation Methods
+---------
+What it does: Compares original data with mean and median imputation results
+Code:
+    try:
+        g2_original = df_cleaned['G2'].dropna()
+    except NameError:
+        g2_original = df['G2'].dropna()
+    
+    # Then compares with df_mean['G2'] and df_median['G2']
+
+Output:
+    - 3-panel histogram comparison
+    - Statistical comparison table (count, mean, median, std, variance, min, max)
+
+Status: FUNCTIONAL but with dependency issue
+Important: Uses df_mean and df_median which were created in cells 3.1.1 and 3.1.2
+Dependency: Requires prior execution of both mean and median imputation cells
+
+
+3.2 - Analysis of Outliers
+---------
+
+Sub-section: Detecting Outliers (Cell 58)
+
+What it does: Detects outliers using two methods:
+    1. IQR (Interquartile Range) Method
+    2. Z-Score Method (threshold=3)
+
+Code:
+    try:
+        data_to_analyze = df_cleaned.copy()
+    except NameError:
+        data_to_analyze = df.copy()
+
+    def detect_outliers_iqr(data, column):
+        Q1 = data[column].quantile(0.25)
+        Q3 = data[column].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        outliers = data[(data[column] < lower_bound) | (data[column] > upper_bound)][column]
+        return outliers, lower_bound, upper_bound
+
+    def detect_outliers_zscore(data, column, threshold=3):
+        mean = data[column].mean()
+        std = data[column].std()
+        z_scores = np.abs((data[column] - mean) / std)
+        outliers = data[z_scores > threshold][column]
+        return outliers
+
+Output:
+    - Outlier summary table with counts for each method
+    - Bounds information (lower and upper for IQR)
+    - Sample outlier values for each column
+
+Status: ROBUST - Has try/except fallback
+
+Sub-section: Visualizing Outliers (Cell 59)
+
+What it does: Creates 3x3 grid of box plots for numerical columns
+Code:
+    try:
+        data_to_analyze = df_cleaned.copy()
+    except NameError:
+        data_to_analyze = df.copy()
+    
+    numeric_cols = data_to_analyze.select_dtypes(include=[np.number]).columns.tolist()
+    
+    # Creates box plots with outliers marked in red
+
+Output: 9 box plots showing outliers highlighted in red
+Status: ROBUST - Has try/except fallback
+
+
+================================================================================
+CRITICAL ISSUES AND OBSERVATIONS
+================================================================================
+
+ISSUE 1: INCONSISTENT DATA SOURCE BETWEEN PART 2 AND PART 3
+Severity: MEDIUM
+Description: 
+    - Part 2 (Data Exploration) uses ONLY df (original data with possible missing values)
+    - Part 3 (Missing Values Analysis) uses df_cleaned (cleaned data)
+    - This creates an inconsistency in the analysis workflow
+
+Implication:
+    - Part 2 analyses are performed on data that may contain invalid values
+    - Part 3 starts over with df_cleaned
+    - The exploration in Part 2 doesn't leverage Part 1's data cleaning work
+
+Recommendation:
+    Part 2 should consider using df_cleaned for more reliable analysis
+
+
+ISSUE 2: MISSING VALUE HANDLING IN PART 2
+Severity: LOW-MEDIUM
+Description:
+    - Part 2 doesn't explicitly show missing value counts
+    - Uses .dropna() for individual operations but doesn't report totals
+    - No summary of how many rows have missing values
+
+Implication:
+    - Users may not realize they're analyzing incomplete data
+    - Different analyses use different numbers of observations
+
+Recommendation:
+    Add summary at start of Part 2 showing missing value statistics
+
+
+ISSUE 3: STUDY TIME LABELS - DYNAMIC BUT DEPENDS ON DATA
+Severity: LOW
+Description:
+    Code creates dynamic labels based on actual studytime values in data:
+    label_map = {
+        1: '1 (<2hrs)',
+        2: '2 (2-5hrs)',
+        3: '3 (5-10hrs)',
+        4: '4 (>10hrs)'
+    }
+    labels = [label_map.get(int(i), str(int(i))) for i in unique_studytime]
+
+Status: GOOD - Handles missing categories gracefully
+Robustness: If studytime has unexpected values, will use str(int(i)) fallback
+Recommendation: This is implemented correctly
+
+
+ISSUE 4: DEFENSIVE PROGRAMMING IN PART 3
+Severity: LOW (Good practice, but masks an issue)
+Description:
+    Part 3 has try/except blocks that silently fall back to df if df_cleaned is missing:
+    
+    try:
+        df_mean = df_cleaned.copy()
+        print("Using df_cleaned for mean imputation")
+    except NameError:
+        df_mean = df.copy()
+        print("df_cleaned not found, using df instead")
+
+Status: Good defensive programming, but indicates awareness of potential issue
+Question: Why is there a possibility that df_cleaned won't exist?
+Answer: In case Part 1 wasn't executed or failed
+
+Recommendation: Fine as is, but document this dependency clearly
+
+
+ISSUE 5: GENERATED CSV FILES
+Severity: LOW
+Files created in Part 3:
+    - 'student_fix1.csv' (from Cell 45, mean imputation)
+    - 'student_fix2.csv' (from Cell 48, median imputation)
+
+Status: Successfully saved from Part 3
+Note: These are different datasets - one uses mean, one uses median imputation
+
+
+================================================================================
+PART 1 CHANGES IMPACT ANALYSIS
+================================================================================
+
+Recent Part 1 commits addressed:
+1. Fix non-standard missing value detection (X, Na, NA)
+2. Make study time labels dynamic
+3. Fix NameError: Add defensive checks for df_cleaned variable
+4. Reorganize section 1.3 Data Cleaning into logical subsections
+
+
+IMPACT ON PART 2:
+- No direct impact - Part 2 uses df, not df_cleaned
+- Non-standard missing values in df are handled by Part 2's .dropna() calls
+- Study time labels: Not directly affected (Part 2 has its own dynamic labels)
+- No NameError risk in Part 2 (doesn't reference undefined variables)
+
+IMPACT ON PART 3:
+- POSITIVE: Study time handling improvements in Part 1 don't directly affect Part 3
+- POSITIVE: Non-standard missing value detection is better
+- POSITIVE: Defensive checks in Part 3 will work with the new df_cleaned
+- NEUTRAL: CSV file generation is independent of Part 1 changes
+
+OVERALL: Part 1 changes are BACKWARD COMPATIBLE with Parts 2 and 3
+
+
+================================================================================
+EXECUTION FLOW ANALYSIS
+================================================================================
+
+Current Flow:
+1. Part 1 (Cells 0-22): Data preparation and cleaning
+   Result: Creates df_cleaned
+
+2. Part 2 (Cells 23-43): Data exploration (uses df, not df_cleaned)
+   Result: Visualizations and statistical analysis
+
+3. Part 3 (Cells 44-60): Missing values and outliers analysis
+   (Cells 44-59 use df_cleaned with fallback, Cells 61+ use MovieLens data)
+
+Dependency Chain:
+- Part 2 depends on Part 1 creating df
+- Part 3 depends on Part 1 creating df_cleaned (but has fallback to df)
+- Part 3's imputation sections create df_mean and df_median used in Cell 51
+- MovieLens section (Part 4) is completely independent
+
+
+CELL EXECUTION ORDER ISSUES:
+- Cell 45 (Mean Imputation) must run before Cell 51 (Comparison)
+- Cell 48 (Median Imputation) must run before Cell 51 (Comparison)
+- If Cells 45 or 48 are skipped, Cell 51 will fail with NameError
+
+
+================================================================================
+CODE QUALITY ASSESSMENT
+================================================================================
+
+STRENGTHS:
+✓ Defensive programming with try/except blocks
+✓ Dynamic label generation for study time
+✓ Comprehensive outlier detection using multiple methods
+✓ Good use of dropna() for handling missing values
+✓ Clear output and reporting
+✓ Proper use of pd.to_numeric() with error handling
+✓ Good visualization with multiple subplots
+
+WEAKNESSES:
+✗ Part 2 doesn't use df_cleaned (inconsistency)
+✗ No explicit missing value summary in Part 2
+✗ No clear indication of which dataset version is being used
+✗ Some code repetition (e.g., try/except pattern repeated in Part 3)
+
+MODERATE ISSUES:
+- Cell dependencies not clearly documented
+- Silent fallback behavior in Part 3 might hide issues
+
+
+================================================================================
+REFERENCES TO PART 1 OUTPUTS
+================================================================================
+
+EXPLICIT REFERENCES:
+1. df_cleaned variable:
+   - Referenced in Cell 45 (Mean Imputation)
+   - Referenced in Cell 48 (Median Imputation)
+   - Referenced in Cell 51 (Imputation Comparison)
+   - Referenced in Cell 58 (Outlier Detection)
+   - Referenced in Cell 59 (Outlier Visualization)
+
+2. Cleaned data properties:
+   - Non-standard missing values converted to NaN
+   - Invalid values converted to NaN
+   - Duplicate rows removed
+
+IMPLICIT REFERENCES:
+1. Study time categories (1, 2, 3, 4) in Cell 33
+2. Medu categories (0-4) in Cells 27 and 39
+3. Grade ranges (0-20) in Cells 30 and 42
+
+
+================================================================================
+SUMMARY: WOULD THE CODE RUN CORRECTLY?
+================================================================================
+
+SHORT ANSWER: YES, with caveats
+
+DETAILED ANSWER:
+
+Part 2 Execution: YES - Will run successfully
+- Uses df which is created in Part 1
+- All operations have proper error handling via .dropna()
+- Study time labels are dynamically generated correctly
+- No dependencies on df_cleaned
+
+Part 3 Execution (Cells 44-51): YES - With considerations
+- Cells 45 and 48 use try/except to handle missing df_cleaned
+- Will use df as fallback if df_cleaned not available
+- CSV files will be saved successfully
+- Cell 51 (Comparison) will work if Cells 45 and 48 executed successfully
+
+Part 3 Execution (Cells 58-59): YES - Will run successfully
+- Use try/except fallback to df
+- Outlier detection will work on either df or df_cleaned
+- Visualizations will display correctly
+
+MovieLens Section (Cells 61+): YES - Independent
+- Completely separate from student data cleaning
+- No dependencies on Parts 1-3
+
+CRITICAL DEPENDENCIES TO MAINTAIN:
+1. Part 1 MUST complete successfully (creates df)
+2. Cells 45 and 48 MUST execute before Cell 51
+3. Cell 51 depends on df_mean and df_median existing
+
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+PRIORITY 1 (Important):
+1. Add explicit documentation of which dataframe (df vs df_cleaned) is used
+   at the start of each section
+2. Add missing value summary at start of Part 2 for context
+3. Document cell dependencies clearly (e.g., "Requires Cell 45")
+
+PRIORITY 2 (Nice to have):
+1. Consider refactoring Part 2 to use df_cleaned for consistency
+2. Consolidate the try/except pattern in Part 3 into a utility function
+3. Add section explaining the difference between df and df_cleaned
+
+PRIORITY 3 (Cosmetic):
+1. Add intermediate section explaining imputation concepts before 3.1
+2. Add reference to CSV files created in the output section
+
+
+================================================================================
