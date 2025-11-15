@@ -1,0 +1,115 @@
+/* Compact CSS for reducing PDF page count */
+@page {
+    size: A4;
+    margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+}
+
+body {
+    font-size: 10pt;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+}
+
+.jp-Cell {
+    margin-bottom: 0.5em !important;
+    padding: 0.3em 0 !important;
+}
+
+.jp-MarkdownOutput {
+    padding: 0.2em 0 !important;
+}
+
+.jp-OutputArea-output {
+    padding: 0.3em 0 !important;
+}
+
+h1 {
+    font-size: 16pt;
+    margin: 0.5em 0 0.3em 0;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 14pt;
+    margin: 0.4em 0 0.3em 0;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 12pt;
+    margin: 0.3em 0 0.2em 0;
+    line-height: 1.2;
+}
+
+p {
+    margin: 0.3em 0;
+    line-height: 1.3;
+}
+
+ul, ol {
+    margin: 0.3em 0;
+    padding-left: 1.5em;
+}
+
+li {
+    margin: 0.2em 0;
+    line-height: 1.3;
+}
+
+pre {
+    margin: 0.3em 0;
+    padding: 0.3em;
+    font-size: 9pt;
+    line-height: 1.2;
+}
+
+code {
+    font-size: 9pt;
+}
+
+table {
+    margin: 0.3em 0;
+    font-size: 9pt;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.3em 0;
+}
+
+/* Reduce image sizes */
+.jp-RenderedImage {
+    max-width: 85% !important;
+    margin: 0.3em auto !important;
+}
+
+/* Tighter spacing for output areas */
+.output_subarea {
+    padding: 0.2em 0 !important;
+    max-width: 100%;
+}
+
+/* Compact tables */
+table.dataframe {
+    font-size: 8pt !important;
+    margin: 0.2em 0 !important;
+}
+
+table.dataframe th, table.dataframe td {
+    padding: 2px 4px !important;
+}
+
+/* Remove extra whitespace */
+.jp-Notebook {
+    padding: 0 !important;
+}
+
+div.output_png {
+    text-align: center;
+}
+
+div.output_png img {
+    max-width: 80%;
+}
