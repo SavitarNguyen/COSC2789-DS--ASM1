@@ -1,109 +1,128 @@
-/* Compact CSS for reducing PDF page count */
+/* Compact layout tuned for version 6 sizing but with clearer hierarchy */
 @page {
     size: A4;
-    margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+    margin: 1cm 1.2cm;
 }
 
 body {
-    font-size: 10pt;
-    line-height: 1.3;
+    font-size: 6.5pt;
+    line-height: 1.35;
     margin: 0;
-    padding: 0;
+    padding: 0.2cm 0.25cm;
+    letter-spacing: 0.01em;
+    background: #fff;
+}
+
+.jp-Notebook {
+    padding: 0 !important;
+}
+
+/* Force base font for rendered markdown */
+.jp-RenderedHTMLCommon {
+    font-size: 6.5pt !important;
+    line-height: 1.35 !important;
+}
+
+.jp-RenderedHTMLCommon p,
+.jp-RenderedHTMLCommon li,
+.jp-RenderedHTMLCommon code,
+.jp-RenderedHTMLCommon pre {
+    font-size: 6.5pt;
+    line-height: 1.35;
 }
 
 .jp-Cell {
-    margin-bottom: 0.5em !important;
-    padding: 0.3em 0 !important;
+    margin: 0.35em 0 !important;
+    padding: 0.15em 0.1em !important;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.jp-MarkdownOutput {
-    padding: 0.2em 0 !important;
+.jp-MarkdownOutput,
+.jp-OutputArea-output,
+.output_subarea {
+    padding: 0.15em 0 !important;
+    margin: 0.05em 0 !important;
 }
 
-.jp-OutputArea-output {
-    padding: 0.3em 0 !important;
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
 }
 
 h1 {
-    font-size: 16pt;
-    margin: 0.5em 0 0.3em 0;
-    line-height: 1.2;
+    font-size: 11pt;
+    margin: 0.45em 0 0.25em 0;
+    border-bottom: 0.5px solid #dcdcdc;
+    padding-bottom: 0.15em;
 }
 
 h2 {
-    font-size: 14pt;
-    margin: 0.4em 0 0.3em 0;
-    line-height: 1.2;
+    font-size: 9pt;
+    margin: 0.35em 0 0.2em 0;
+    border-left: 2px solid #dcdcdc;
+    padding-left: 0.2em;
 }
 
 h3 {
-    font-size: 12pt;
-    margin: 0.3em 0 0.2em 0;
-    line-height: 1.2;
+    font-size: 7.5pt;
+    margin: 0.3em 0 0.15em 0;
 }
 
 p {
-    margin: 0.3em 0;
+    margin: 0.25em 0;
     line-height: 1.3;
 }
 
 ul, ol {
-    margin: 0.3em 0;
-    padding-left: 1.5em;
+    margin: 0.25em 0;
+    padding-left: 1.2em;
 }
 
 li {
-    margin: 0.2em 0;
-    line-height: 1.3;
+    margin: 0.15em 0;
+    line-height: 1.25;
 }
 
 pre {
-    margin: 0.3em 0;
-    padding: 0.3em;
-    font-size: 9pt;
-    line-height: 1.2;
+    font-size: 5.5pt;
+    margin: 0.25em 0;
+    padding: 0.2em 0.3em;
+    line-height: 1.15;
+    background: #fafafa;
+    border: 1px solid #ededed;
+    border-radius: 2px;
 }
 
 code {
-    font-size: 9pt;
+    font-size: 5.5pt;
 }
 
 table {
-    margin: 0.3em 0;
-    font-size: 9pt;
+    font-size: 5.5pt;
+    margin: 0.25em 0;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    margin: 0.3em 0;
-}
-
-/* Reduce image sizes */
-.jp-RenderedImage {
-    max-width: 85% !important;
-    margin: 0.3em auto !important;
-}
-
-/* Tighter spacing for output areas */
-.output_subarea {
-    padding: 0.2em 0 !important;
-    max-width: 100%;
-}
-
-/* Compact tables */
 table.dataframe {
-    font-size: 8pt !important;
+    font-size: 5pt !important;
     margin: 0.2em 0 !important;
 }
 
-table.dataframe th, table.dataframe td {
-    padding: 2px 4px !important;
+table th, table td {
+    padding: 1px 2px;
+    border: 0.3px solid #d7d7d7;
 }
 
-/* Remove extra whitespace */
-.jp-Notebook {
-    padding: 0 !important;
+table.dataframe th, table.dataframe td {
+    padding: 1px 2px !important;
+}
+
+img {
+    max-width: 70%;
+    margin: 0.2em auto;
+    display: block;
 }
 
 div.output_png {
@@ -111,5 +130,24 @@ div.output_png {
 }
 
 div.output_png img {
-    max-width: 80%;
+    max-width: 65%;
+}
+
+.container {
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+@media print {
+    body { font-size: 6.5pt !important; line-height: 1.35 !important; padding: 0 !important; }
+    .jp-RenderedHTMLCommon { font-size: 6.5pt !important; line-height: 1.35 !important; }
+    h1 { font-size: 11pt !important; }
+    h2 { font-size: 9pt !important; }
+    h3 { font-size: 7.5pt !important; }
+    pre { font-size: 5.5pt !important; }
+    code { font-size: 5.5pt !important; }
+    table { font-size: 5.5pt !important; }
+    table.dataframe { font-size: 5pt !important; }
+    img { max-width: 70% !important; }
+    div.output_png img { max-width: 65% !important; }
 }

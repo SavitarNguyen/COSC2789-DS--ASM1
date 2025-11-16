@@ -84,44 +84,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   scrollbar-width: thin;
 }
 
-/* AGGRESSIVE COMPACT STYLES */
-@page { size: A4; margin: 1cm 1.2cm; }
-@media print {
-  body { font-size: 8pt !important; line-height: 1.15 !important; }
-  h1 { font-size: 13pt !important; margin: 0.3em 0 0.2em 0 !important; page-break-after: avoid; }
-  h2 { font-size: 11pt !important; margin: 0.25em 0 0.15em 0 !important; page-break-after: avoid; }
-  h3 { font-size: 9.5pt !important; margin: 0.2em 0 0.1em 0 !important; page-break-after: avoid; }
-  p { margin: 0.15em 0 !important; line-height: 1.2 !important; }
-  ul, ol { margin: 0.15em 0 !important; padding-left: 1.2em !important; }
-  li { margin: 0.1em 0 !important; line-height: 1.2 !important; }
-  table { font-size: 7pt !important; margin: 0.2em 0 !important; }
-  table.dataframe { font-size: 6.5pt !important; margin: 0.15em 0 !important; }
-  table.dataframe th, table.dataframe td { padding: 1px 2px !important; line-height: 1.1 !important; }
-  img { max-width: 65% !important; margin: 0.2em auto !important; display: block !important; }
-  div.output_png img { max-width: 60% !important; }
-  .jp-Cell { margin-bottom: 0.2em !important; padding: 0.1em 0 !important; }
-  .output_subarea { padding: 0.1em 0 !important; }
-  pre { font-size: 7pt !important; margin: 0.15em 0 !important; padding: 0.2em !important; line-height: 1.1 !important; }
-  code { font-size: 7pt !important; }
-  .container { padding: 0 !important; max-width: 100% !important; }
-}
-body { font-size: 8pt; line-height: 1.15; }
-h1 { font-size: 13pt; margin: 0.3em 0 0.2em 0; }
-h2 { font-size: 11pt; margin: 0.25em 0 0.15em 0; }
-h3 { font-size: 9.5pt; margin: 0.2em 0 0.1em 0; }
-p { margin: 0.15em 0; line-height: 1.2; }
-ul, ol { margin: 0.15em 0; padding-left: 1.2em; }
-li { margin: 0.1em 0; line-height: 1.2; }
-table { font-size: 7pt; margin: 0.2em 0; }
-table.dataframe { font-size: 6.5pt !important; margin: 0.15em 0 !important; }
-table.dataframe th, table.dataframe td { padding: 1px 2px !important; }
-img { max-width: 65%; margin: 0.2em auto; display: block; }
-div.output_png img { max-width: 60%; }
-.jp-Cell { margin-bottom: 0.2em !important; padding: 0.1em 0 !important; }
-.output_subarea { padding: 0.1em 0 !important; }
-pre { font-size: 7pt; margin: 0.15em 0; padding: 0.2em; line-height: 1.1; }
-code { font-size: 7pt; }
-.container { padding: 0 !important; max-width: 100% !important; }
 /* tiny scrollbar */
 
 .jp-scrollbar-tiny::-webkit-scrollbar,
@@ -7554,8 +7516,8 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Assignment-1:-Data-Preparation-and-Exploration">Assignment 1: Data Preparation and Exploration<a class="anchor-link" href="#Assignment-1:-Data-Preparation-and-Exploration">¶</a></h1><h2 id="Student-Performance-Dataset-Analysis">Student Performance Dataset Analysis<a class="anchor-link" href="#Student-Performance-Dataset-Analysis">¶</a></h2><p>This notebook is the assignment 1 submission of student s4134316, including the following steps: 1) data preparation, 2) data exploration, 3) missing value analysis, and 4) external data integration, and 5) Conclusions</p>
-<p><strong>Dataset:</strong> Modified Student Performance dataset from UCI Machine Learning Repository (RMIT 2025)</p>
+<h1 id="Assignment-1:-Data-Preparation-and-Exploration">Assignment 1: Data Preparation and Exploration<a class="anchor-link" href="#Assignment-1:-Data-Preparation-and-Exploration">¶</a></h1><h2 id="Student-Performance-Dataset-Analysis">Student Performance Dataset Analysis<a class="anchor-link" href="#Student-Performance-Dataset-Analysis">¶</a></h2><p>This notebook is the assignment 1 submission of student s4134316, including the following steps: 1) data preparation, 2) data exploration, 3) missing value analysis, and 4) external data integration</p>
+<p><strong>Dataset:</strong> Modified Student Performance dataset from UCI Machine Learning Repository (Cortez &amp; Silva, 2008; RMIT 2025)</p>
 <hr/>
 </div>
 </div>
@@ -7568,14 +7530,14 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="1.-Data-Preparation">1. Data Preparation<a class="anchor-link" href="#1.-Data-Preparation">¶</a></h1><p>The data preparation workflow follows these key stages:</p>
-<p>Data Loading (1.1): Import the CSV file and verify its structure
-Initial Exploration (1.2): Examine data types, dimensions, and summary statistics
-Data Cleaning (1.3): Identify errors and clean the data:
-Standard and non-standard missing values
-Sanity checks for impossible values
-Typos
-Binary values check
-Dataset Source: Student Performance Dataset (modified), UCI Machine Learning Repository (RMIT 2025)</p>
+<ul>
+<li><p>Data Loading (1.1): Import the CSV file and verify its structure</p>
+</li>
+<li><p>Initial Exploration (1.2): Examine data types, dimensions, and summary statistics</p>
+</li>
+<li><p>Data Cleaning (1.3): including identify errors and clean the data (Standard and non-standard missing values), Sanity checks, typos, binary values check</p>
+</li>
+</ul>
 <h2 id="1.1-Loading-the-Data">1.1 Loading the Data<a class="anchor-link" href="#1.1-Loading-the-Data">¶</a></h2><p>First, we load the CSV data file and verify its contents.</p>
 </div>
 </div>
@@ -7969,17 +7931,6 @@ Column Names:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8027,7 +7978,7 @@ G1                      1    0.153846
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.2-Detect-Non-Standard-Missing-Values-and-Transform-to-Standard-Missing-Values-(Numerical-columns)">1.3.2 Detect Non-Standard Missing Values and Transform to Standard Missing Values (Numerical columns)<a class="anchor-link" href="#1.3.2-Detect-Non-Standard-Missing-Values-and-Transform-to-Standard-Missing-Values-(Numerical-columns)">¶</a></h3><p>Check for non-standard missing value indicators and convert them to standard NaN values.</p>
+<h3 id="1.3.2-Detect-Non-Standard-Missing-Values-and-Transform-to-Standard-Missing-Values-(Numerical-columns)">1.3.2 Detect Non-Standard Missing Values and Transform to Standard Missing Values (Numerical columns)<a class="anchor-link" href="#1.3.2-Detect-Non-Standard-Missing-Values-and-Transform-to-Standard-Missing-Values-(Numerical-columns)">¶</a></h3><p>Check for non-standard missing value indicators (adapted from de Jonge &amp; van der Loo (2013).</p>
 </div>
 </div>
 </div>
@@ -8060,7 +8011,7 @@ Column 'G2':
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.3-Sanity-Checks-for-Impossible-Values">1.3.3 Sanity Checks for Impossible Values<a class="anchor-link" href="#1.3.3-Sanity-Checks-for-Impossible-Values">¶</a></h3><p>Validate data against UCI repository rules and transform impossible/out-of-range values to NaN.</p>
+<h3 id="1.3.3-Sanity-Checks-for-Impossible-Values">1.3.3 Sanity Checks for Impossible Values<a class="anchor-link" href="#1.3.3-Sanity-Checks-for-Impossible-Values">¶</a></h3><p>Validate data against UCI repository rules (Cortez &amp; Silva, 2008) and transform impossible/out-of-range values to NaN.</p>
 <p><strong>Valid Ranges of Numerical values:</strong></p>
 <ul>
 <li><code>age</code>: 15-22 (student age in years)</li>
@@ -8150,7 +8101,7 @@ Row indices with missing values:
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-⚠️  Column 'Mjob':
+  Column 'Mjob':
    Expected: ['teacher', 'health', 'services', 'at_home', 'other']
    Unexpected values found: ['service', 'at home', 'home', '0']
       - 'service': 3 occurrences
@@ -8158,13 +8109,13 @@ Row indices with missing values:
       - 'home': 3 occurrences
       - '0': 1 occurrences
 
-⚠️  Column 'Fjob':
+  Column 'Fjob':
    Expected: ['teacher', 'health', 'services', 'at_home', 'other']
    Unexpected values found: ['others', '0']
       - 'others': 5 occurrences
       - '0': 1 occurrences
 
-⚠️  Column 'reason':
+  Column 'reason':
    Expected: ['home', 'reputation', 'course', 'other']
    Unexpected values found: ['0']
       - '0': 1 occurrences
@@ -8184,17 +8135,17 @@ Row indices with missing values:
 ============================================================
 
  Column 'Mjob':
-   ✓ 'service' → 'services' (3 occurrences)
-   ✓ 'home' → 'at_home' (3 occurrences)
-   ✓ 'at home' → 'at_home' (4 occurrences)
-   ✓ '0' → 'nan' (1 occurrences)
+    'service' → 'services' (3 occurrences)
+    'home' → 'at_home' (3 occurrences)
+    'at home' → 'at_home' (4 occurrences)
+    '0' → 'nan' (1 occurrences)
 
  Column 'Fjob':
-   ✓ 'others' → 'other' (5 occurrences)
-   ✓ '0' → 'nan' (1 occurrences)
+    'others' → 'other' (5 occurrences)
+    '0' → 'nan' (1 occurrences)
 
  Column 'reason':
-   ✓ '0' → 'nan' (1 occurrences)
+    '0' → 'nan' (1 occurrences)
 
 ============================================================
 Transformation complete!
@@ -8225,27 +8176,27 @@ Transformation complete!
 ✓ school: All values valid (['GP', 'MS'])
 ✓ sex: All values valid (['F', 'M'])
 
-❌ address: Found invalid values: ['0']
+address: Found invalid values: ['0']
    Valid values should be: ['U', 'R']
    Value counts: {'U': 449, 'R': 200, '0': 1}
 
-❌ famsize: Found invalid values: ['0']
+famsize: Found invalid values: ['0']
    Valid values should be: ['LE3', 'GT3']
    Value counts: {'GT3': 456, 'LE3': 193, '0': 1}
 
-❌ activities: Found invalid values: ['0']
+activities: Found invalid values: ['0']
    Valid values should be: ['yes', 'no']
    Value counts: {'no': 330, 'yes': 319, '0': 1}
 
-❌ higher: Found invalid values: ['0']
+higher: Found invalid values: ['0']
    Valid values should be: ['yes', 'no']
    Value counts: {'yes': 578, 'no': 71, '0': 1}
 
-❌ internet: Found invalid values: ['0']
+internet: Found invalid values: ['0']
    Valid values should be: ['yes', 'no']
    Value counts: {'yes': 500, 'no': 149, '0': 1}
 
-❌ romantic: Found invalid values: ['0']
+romantic: Found invalid values: ['0']
    Valid values should be: ['yes', 'no']
    Value counts: {'no': 407, 'yes': 242, '0': 1}
 
@@ -8263,57 +8214,52 @@ Summary:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.7-Summary-of-Data-Changes">1.3.7 Summary of Data Changes<a class="anchor-link" href="#1.3.7-Summary-of-Data-Changes">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>============================================================
-DATA CLEANING SUMMARY
-============================================================
-
-1. DATA LOADING
-   Original dataset shape: (650, 25)
-   Cleaned dataset shape: (650, 25)
-
-2. MISSING VALUES
-   Rows with missing values: 6
-   Affected columns: ['school', 'sex', 'Mjob', 'Fjob', 'studytime', 'G1']
-     - school: 1 missing value(s)
-     - sex: 1 missing value(s)
-     - Mjob: 1 missing value(s)
-     - Fjob: 1 missing value(s)
-     - studytime: 3 missing value(s)
-     - G1: 1 missing value(s)
-
-3. DATA TRANSFORMATIONS APPLIED
-   Non-standard missing values converted to NaN:
-     - studytime: 3 value(s) converted
-     - G1: 3 value(s) converted
-     - G2: 4 value(s) converted
-
-   Invalid values converted to NaN (sanity checks):
-     - age: 5 invalid value(s) (valid range: 15-22)
-     - G1: 3 invalid value(s) (valid range: 0-20)
-     - studytime: 7 invalid value(s) (valid range: 1-4)
-
-4. DATA QUALITY CHECKS PERFORMED
-   ✓ Standard missing value detection
-   ✓ Non-standard missing value detection and conversion
-   ✓ Sanity checks for impossible/out-of-range values
-   ✓ Duplicate row detection and removal
-
-============================================================
-Data cleaning complete!
-============================================================
-</pre>
-</div>
+<h3 id="1.3.7-Summary-of-Data-Changes">1.3.7 Summary of Data Changes<a class="anchor-link" href="#1.3.7-Summary-of-Data-Changes">¶</a></h3><p>The following table comprehensively documents all data modifications performed during the cleaning process:</p>
+<h4 id="Overview-of-Changes"><strong>Overview of Changes</strong><a class="anchor-link" href="#Overview-of-Changes">¶</a></h4><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Items Changed</th>
+<th>Total Modifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-standard missing values</td>
+<td>3 columns</td>
+<td>10 values converted to NaN</td>
+</tr>
+<tr>
+<td>Invalid/impossible values</td>
+<td>3 columns</td>
+<td>15 values converted to NaN</td>
+</tr>
+<tr>
+<td>Typo corrections</td>
+<td>3 columns</td>
+<td>16 values standardized</td>
+</tr>
+<tr>
+<td>Invalid categorical values</td>
+<td>6 columns</td>
+<td>6 values converted to NaN</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>8 unique columns</strong></td>
+<td><strong>47 data modifications</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h4 id="Rows-Affected-by-Missing-Values"><strong>Rows Affected by Missing Values</strong><a class="anchor-link" href="#Rows-Affected-by-Missing-Values">¶</a></h4><p>After all transformations, <strong>30 rows</strong> contain at least one missing value</p>
+<h4 id="Data-Integrity-Verification"><strong>Data Integrity Verification</strong><a class="anchor-link" href="#Data-Integrity-Verification">¶</a></h4><ul>
+<li><strong>Dataset shape maintained</strong>: 650 rows × 25 columns (no rows dropped during cleaning)</li>
+<li><strong>All typos standardized</strong>: Categorical values now match expected domain values</li>
+<li><strong>Invalid values flagged</strong>: Out-of-range numerical values converted to NaN for proper handling</li>
+<li><strong>Missing values standardized</strong>: All non-standard missing indicators converted to pandas NaN</li>
+</ul>
+<p><strong>Conclusion</strong>: The cleaned dataset (<code>df_cleaned</code>) now has standardized, validated data ready for analysis. Missing values are explicitly marked as NaN and will be addressed in Task 3 to compared with imputation techniques.</p>
 </div>
 </div>
 </div>
@@ -8388,18 +8334,8 @@ Name: count, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Rationale for Selection:</strong></p>
-<ul>
-<li>Mother's job (<code>Mjob</code>) is a nominal categorical variable with no inherent ordering</li>
-<li>This variable is important as parental occupation can influence student support and resources</li>
-<li>A bar chart is the most appropriate visualization for nominal data</li>
-</ul>
-<p><strong>Key Observations:</strong></p>
-<ul>
-<li>The most common mother's occupation can be identified from the visualization</li>
-<li>The distribution shows the diversity of family backgrounds in the student population</li>
-<li>This information could be useful for understanding socioeconomic factors affecting student performance</li>
-</ul>
+<p><strong>Rationale for Selection Mother's job (<code>Mjob</code>):</strong> is a nominal categorical variable illustrating the occupation of students' mothers. Parental occupation is a vital indicator of socioeconomic status, potentially influencing students academic achievement through students' available resources, parental involvement, and home learning environment (Berkowitz 2017). A bar chart appropriately visualizes the frequency distribution of nominal categories without implying false ordering.</p>
+<p><strong>Key Observations:</strong> The majority of mothers work in "other" occupations (40.3%), followed by "services" (18.2%) and "at home" (15.8%). By contrast, professional occupations show lower representation: "teacher" (7.8%, n=51) and "health" (5.5%, n=36).</p>
 </div>
 </div>
 </div>
@@ -8448,18 +8384,8 @@ Median Education Level: 2.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Rationale for Selection:</strong></p>
-<ul>
-<li>Mother's education (<code>Medu</code>) is an ordinal variable with clear ranking from 0 (none) to 4 (higher education)</li>
-<li>Parental education is a strong predictor of student academic success</li>
-<li>An ordered bar chart preserves the ordinal nature while showing frequency distribution</li>
-</ul>
-<p><strong>Key Observations:</strong></p>
-<ul>
-<li>The distribution reveals the education level pattern among mothers in the dataset</li>
-<li>We can identify whether most mothers have higher education or lower education levels</li>
-<li>This variable can be correlated with student performance to understand intergenerational education effects</li>
-</ul>
+<p><strong>Rationale for Selection Mother's education (<code>Medu</code>):</strong> this is an ordinal variable ranging from 0 (no education) to 4 (higher education). Maternal education is one of the most consistent predictors of children's academic success, including enriched home learning environments and more effective academic support and homework assistance (Hartas, 2011). An ordered bar chart preserves the ordinal ranking while displaying frequency distribution.</p>
+<p><strong>Key Observations:</strong> Educational attainment is concentrated at moderate levels: 9th grade (Medu=2) represents 27.5% (n=178), followed by secondary education (Medu=3) at 25.4% (n=165). Higher education (Medu=4) accounts for 23.2% (n=151), while only 4.2% (n=27) of mothers have no formal education</p>
 </div>
 </div>
 </div>
@@ -8507,18 +8433,12 @@ IQR: 4.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Rationale for Selection:</strong></p>
-<ul>
-<li>Final grade (<code>G3</code>) is a continuous numerical variable representing the key outcome variable</li>
-<li>Understanding the distribution of final grades is crucial for assessing overall student performance</li>
-<li>Both histogram and box plot provide complementary views of the distribution</li>
-</ul>
+<p><strong>Rationale for Selection:</strong> Final grade (G3) is a continuous numerical variable (scale 0-20) representing the primary outcome measure of student academic performance.</p>
 <p><strong>Key Observations:</strong></p>
 <ul>
-<li>The histogram shows the shape of grade distribution (normal, skewed, bimodal, etc.)</li>
-<li>The box plot reveals central tendency, spread, and potential outliers</li>
-<li>We can identify if grades are concentrated around passing marks or evenly distributed</li>
-<li>Outliers in the box plot may indicate exceptional or struggling students requiring attention</li>
+<li>Grades is a normal distribution with slight <em><strong>left skew</strong></em>, centered around mean = 11.92 (SD = 3.24). With IRQ = 10-14, most students score between 10-14, representing 50% of the distribution</li>
+<li>For distribution, it demonstrates concentration around passing grades (10-12) (45% of students are in this range).</li>
+<li>Box plot reveals some low-performing outliers (G3 ≤ 5), indicating students at risk of academic failure who may require targeted intervention. By contrast, there is no high outliers beyond 19, which means there is a grade ceiling effect (Brookhart et al. 2019).</li>
 </ul>
 </div>
 </div>
@@ -8531,7 +8451,7 @@ IQR: 4.0
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
 <h2 id="2.2-Exploring-Relationships-Between-Variables">2.2 Exploring Relationships Between Variables<a class="anchor-link" href="#2.2-Exploring-Relationships-Between-Variables">¶</a></h2><p>We will investigate three relationships with specific hypotheses:</p>
-<h3 id="2.2.1-Relationship-1:-Study-Time-vs-Final-Grade">2.2.1 Relationship 1: Study Time vs Final Grade<a class="anchor-link" href="#2.2.1-Relationship-1:-Study-Time-vs-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students who dedicate more time to studying (higher <code>studytime</code>) will achieve higher final grades (<code>G3</code>).</p>
+<h3 id="2.2.1-Relationship-1:-Study-Time-vs-Final-Grade">2.2.1 Relationship 1: Study Time vs Final Grade<a class="anchor-link" href="#2.2.1-Relationship-1:-Study-Time-vs-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students who dedicate more time to studying (higher <code>studytime</code>) will achieve higher final grades (<code>G3</code>) (Credé and Kuncel 2008).</p>
 </div>
 </div>
 </div>
@@ -8567,13 +8487,9 @@ Result: Significant difference in grades across study time groups (p &lt; 0.05)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Discussion:</strong></p>
-<ul>
-<li>The visualization shows the distribution of final grades across different study time categories</li>
-<li>If the hypothesis is correct, we should observe an upward trend in mean grades as study time increases</li>
-<li>The ANOVA test indicates whether differences between groups are statistically significant</li>
-<li>Outliers may represent students with exceptional ability or those who study inefficiently</li>
-</ul>
+<p><strong>Discussion:</strong>
+The hypothesis is <strong>strongly supported</strong>. Students who dedicate more time to studying demonstrate significantly higher final grades, with ANOVA confirming highly significant differences across study time groups (F = 16.89, p &lt; 0.0001).</p>
+<p>Mean grades increase substantially from 10.79 for students studying less than 2 hours weekly (studytime = 1) to 13.30 for those studying 5-10 hours (studytime = 3), representing a 2.51-point improvement (23% increase). However, an interesting pattern emerges: students reporting the highest study time (&gt;10 hours, studytime = 4) show slightly lower mean grades (13.09) than the studytime = 3 group, though this group has the smallest sample size (n = 34).</p>
 </div>
 </div>
 </div>
@@ -8583,7 +8499,7 @@ Result: Significant difference in grades across study time groups (p &lt; 0.05)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.2.2-Relationship-2:-Absences-vs-Final-Grade">2.2.2 Relationship 2: Absences vs Final Grade<a class="anchor-link" href="#2.2.2-Relationship-2:-Absences-vs-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students with more absences will have lower final grades, as class attendance is crucial for learning.</p>
+<h3 id="2.2.2-Relationship-2:-Absences-vs-Final-Grade">2.2.2 Relationship 2: Absences vs Final Grade<a class="anchor-link" href="#2.2.2-Relationship-2:-Absences-vs-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students with more absences will have lower final grades, as class attendance is crucial for learning (Credé and Roch 2010)</p>
 </div>
 </div>
 </div>
@@ -8619,13 +8535,8 @@ Absences &gt;10: Mean Grade = 10.82, Count = 50
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Discussion:</strong></p>
-<ul>
-<li>The scatter plot reveals the overall trend between absences and final grades</li>
-<li>A negative correlation would support the hypothesis that absences harm academic performance</li>
-<li>The box plot categorizes absences to show how grade distributions change</li>
-<li>Outliers might represent students who miss class but still perform well (self-learners) or vice versa</li>
-</ul>
+<p><strong>Discussion:</strong> The hypothesis is <strong>weakly supported</strong>. While the data show a trend toward lower grades with increased absences, the overall correlation is very weak and not statistically significant (r = -0.065, p = 0.0999). Specifically, students with 0 absences (mean = 12.04) perform nearly identically to those with 1-5 absences (mean = 12.03) and 6-10 absences (mean = 11.94). Only students with more than 10 absences show notably lower performance (mean = 10.82), representing a 1.22-point decrease compared to perfect attenders (10% decline).</p>
+<p>Several explanations are plausible: (1) <strong>threshold effect</strong> - occasional absences (1-10 days) may not substantially harm learning if students compensate through self-study, (2) <strong>teaching quality</strong> - if lectures add minimal value beyond textbook material, attendance matters less (Credé et al., 2010)</p>
 </div>
 </div>
 </div>
@@ -8635,7 +8546,7 @@ Absences &gt;10: Mean Grade = 10.82, Count = 50
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.2.3-Relationship-3:-Mother's-Education-vs-Student's-Final-Grade">2.2.3 Relationship 3: Mother's Education vs Student's Final Grade<a class="anchor-link" href="#2.2.3-Relationship-3:-Mother's-Education-vs-Student's-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students whose mothers have higher education levels (<code>Medu</code>) will achieve higher final grades, reflecting the benefits of an educated home environment.</p>
+<h3 id="2.2.3-Relationship-3:-Mother's-Education-vs-Student's-Final-Grade">2.2.3 Relationship 3: Mother's Education vs Student's Final Grade<a class="anchor-link" href="#2.2.3-Relationship-3:-Mother's-Education-vs-Student's-Final-Grade">¶</a></h3><p><strong>Hypothesis:</strong> Students whose mothers have higher education levels (<code>Medu</code>) will achieve higher final grades, reflecting the benefits of an educated home environment (Hartas 2011).</p>
 </div>
 </div>
 </div>
@@ -8673,13 +8584,9 @@ Spearman Correlation: r = 0.2814, p-value = 0.0000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Discussion:</strong></p>
-<ul>
-<li>The box plots show how final grade distributions vary across mother's education levels</li>
-<li>An upward trend in mean grades would support the hypothesis</li>
-<li>The Spearman correlation quantifies the strength of the ordinal relationship</li>
-<li>This relationship reflects the importance of parental education in providing academic support and resources</li>
-</ul>
+<p><strong>Discussion:</strong> The hypothesis is <strong>supported</strong>. A statistically significant positive relationship exists (Spearman r = 0.28, p &lt; 0.0001), with ANOVA confirming significant differences across education levels (F = 10.83, p &lt; 0.0001).</p>
+<p>Students whose mothers completed higher education (Medu = 4) achieve mean grades of 13.11, compared to 10.84 for students whose mothers have only primary education (Medu = 1), representing a 2.27-point improvement (21% increase). This suggests that university-educated mothers may provide qualitatively different forms of cultural capital, educational resources, and academic expectations that particularly benefit their children (Hartas 2011).</p>
+<p>The 0.2814 correlation shows that maternal education explains approximately 8% of grade variance. High standard deviations within each education level (3.06-3.28) demonstrate substantial individual variation, reflecting the indirect pathways through which maternal education operates—via parental expectations.</p>
 </div>
 </div>
 </div>
@@ -8750,38 +8657,9 @@ max     19.000000   19.000000   19.000000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Analysis of Scatter Matrix:</strong></p>
-<ol>
-<li><p><strong>Diagonal Histograms:</strong></p>
-<ul>
-<li>Show the distribution of each grade variable (G1, G2, G3)</li>
-<li>Reveal whether grades are normally distributed or skewed</li>
-<li>Help identify the overall performance patterns across different periods</li>
-</ul>
-</li>
-<li><p><strong>Off-Diagonal Scatter Plots:</strong></p>
-<ul>
-<li><strong>G1 vs G2:</strong> Shows consistency of performance between first and second period</li>
-<li><strong>G1 vs G3:</strong> Reveals how well first period grades predict final outcomes</li>
-<li><strong>G2 vs G3:</strong> Shows the relationship between second period and final grades</li>
-</ul>
-</li>
-<li><p><strong>Correlation Insights:</strong></p>
-<ul>
-<li>High positive correlations (close to 1.0) indicate strong linear relationships</li>
-<li>If G1-G2, G2-G3 correlations are strong, students show consistent performance</li>
-<li>Weaker correlations might suggest intervention opportunities between periods</li>
-</ul>
-</li>
-<li><p><strong>Key Observations:</strong></p>
-<ul>
-<li>The scatter plots reveal whether students improve, decline, or maintain grades over time</li>
-<li>Outliers in scatter plots may represent students who significantly improved or declined</li>
-<li>Strong correlations suggest grades are good predictors of final performance</li>
-<li>This information is valuable for early intervention strategies</li>
-</ul>
-</li>
-</ol>
+<p><strong>Analysis of Scatter Matrix:</strong> The scatter matrix reveals <strong>very strong</strong> positive correlations between all three grade periods, around (0.818 -0.919).</p>
+<p>More specifically, the G2-G3 correlation (0.919) is the strongest, demonstrating that second-period grades are highly predictive of final outcomes. This aligns with research showing "temporal proximity increases predictive accuracy" (Geiser &amp; Santelices, 2007). The G1-G2 correlation (0.855) confirms students maintain consistent performance from the outset. Additionally, the strong G1-G3 correlation (0.818) validates early intervention strategies, as first-period performance reliably predicts final grades. Zimmermann et al. (2015) found that early academic metrics can explain over 54% of variance in later performance, supporting the use of G1 scores for identifying at-risk students.</p>
+<p>For grade distributions, all three periods show similar patterns with means ranging from 11.38 (G1) to 11.91 (G3), indicating slight grade improvement over time. The medians (11-12) and interquartile ranges (10-13/14) are consistent across periods, suggesting stable performance distributions.</p>
 </div>
 </div>
 </div>
@@ -8792,7 +8670,7 @@ max     19.000000   19.000000   19.000000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h1 id="3.-Analysis-of-Missing-Values-and-Outliers">3. Analysis of Missing Values and Outliers<a class="anchor-link" href="#3.-Analysis-of-Missing-Values-and-Outliers">¶</a></h1><h2 id="3.1-Handling-Missing-Values">3.1 Handling Missing Values<a class="anchor-link" href="#3.1-Handling-Missing-Values">¶</a></h2><p>We identified missing values in the grade columns (G1, G2, G3) during data cleaning. Now we will apply different imputation techniques and compare their effects.</p>
+<h1 id="3.-Analysis-of-Missing-Values-and-Outliers">3. Analysis of Missing Values and Outliers<a class="anchor-link" href="#3.-Analysis-of-Missing-Values-and-Outliers">¶</a></h1><p>We clean the original dataset off missing values only (without other errors like typos, impossible values, ...), as required in the assignment prompt.</p>
 </div>
 </div>
 </div>
@@ -8804,7 +8682,7 @@ max     19.000000   19.000000   19.000000
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-Standard missing values (NaN) after replacing non-standard indicators:
+Standard missing values (NaN) after replacing non-standard indicators, ready to be imputed:
 school       1
 sex          1
 age          2
@@ -8814,6 +8692,7 @@ studytime    3
 G1           4
 G2           4
 dtype: int64
+
 Data types after conversion:
 age         float64
 absences      int64
@@ -8836,6 +8715,17 @@ dtype: object
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Explanation of Mean Imputation:</strong>
+Mean imputation replaces missing values in a numerical column with the arithmetic mean (average) of all non-missing values in that same column. This approach maintains the overall mean of the dataset and is computationally simple. It works by calculating the sum of all existing values divided by the count of non-missing entries, then filling all NaN/missing positions with this calculated mean value. This method is most appropriate when data is missing completely at random (MCAR) and the variable follows an approximately normal distribution (Little and Rubbin 2019). However, it reduces variance in the dataset and can underestimate standard deviation, as it does not account for the natural variability that would exist in the missing observations (Little and Rubbin 2019).</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
@@ -8844,17 +8734,6 @@ dtype: object
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>
-Missing values before imputation:
-school       1
-sex          1
-age          2
-Mjob         1
-Fjob         1
-studytime    3
-G1           4
-G2           4
-dtype: int64
-
 Missing values after mean imputation:
 0
 
@@ -8876,8 +8755,7 @@ G2: 11.59
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Explanation of Mean Imputation:</strong>
-Mean imputation replaces missing values in a numerical column with the arithmetic mean (average) of all non-missing values in that same column. This approach maintains the overall mean of the dataset and is computationally simple. It works by calculating the sum of all existing values divided by the count of non-missing entries, then filling all NaN/missing positions with this calculated mean value. This method is most appropriate when data is missing completely at random (MCAR) and the variable follows an approximately normal distribution. However, it reduces variance in the dataset and can underestimate standard deviation, as it doesn't account for the natural variability that would exist in the missing observations.</p>
+<h3 id="3.1.2-Approach-2:-Median-Imputation">3.1.2 Approach 2: Median Imputation<a class="anchor-link" href="#3.1.2-Approach-2:-Median-Imputation">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8887,7 +8765,8 @@ Mean imputation replaces missing values in a numerical column with the arithmeti
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.1.2-Approach-2:-Median-Imputation">3.1.2 Approach 2: Median Imputation<a class="anchor-link" href="#3.1.2-Approach-2:-Median-Imputation">¶</a></h3>
+<p><strong>Explanation of Median Imputation:</strong>
+Median imputation replaces missing values in a numerical column with the median of all non-missing values in that column (ascending order). This imputation method is more robust to outliers and skewed distributions, so it is particularly suitable for datasets with extreme values or non-normal distributions (Little and Rubbin 2019). It is preferred when the dataset contains outliers or when the distribution is skewed, as it provides a more representative "typical" value.</p>
 </div>
 </div>
 </div>
@@ -8898,18 +8777,7 @@ Mean imputation replaces missing values in a numerical column with the arithmeti
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-Missing values before imputation:
-school       1
-sex          1
-age          2
-Mjob         1
-Fjob         1
-studytime    3
-G1           4
-G2           4
-dtype: int64
-Missing values after median imputation:
+<pre>Missing values after median imputation:
 0
 
 Median imputation completed and saved to 'student_fix2.csv'
@@ -8921,17 +8789,6 @@ G1: 11.00
 G2: 11.00
 </pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Explanation of Median Imputation:</strong>
-Median imputation replaces missing values in a numerical column with the median (middle value) of all non-missing values in that column when sorted in ascending order. The median is more robust to outliers and skewed distributions compared to the mean, making it particularly suitable for datasets with extreme values or non-normal distributions. This approach preserves the central tendency of the data while being less influenced by anomalous values. It is preferred when the dataset contains outliers or when the distribution is skewed, as it provides a more representative "typical" value. Like mean imputation, it also reduces variance but is more resistant to the distorting effects of extreme values on the imputed data.</p>
 </div>
 </div>
 </div>
@@ -8998,18 +8855,9 @@ Median imputation: 17.65 years
 Original mean: 16.76 years
 Missing values imputed: 7 observations</p>
 <p><strong>Visual and Statistical Impact:</strong></p>
-<p><em>Dramatic Spike Effect:</em>
-Both imputation methods create an extreme spike at approximately age 17-18, with over 600+ observations concentrated at this single value. This artificial concentration completely dominates the distribution, as seen in the middle and right panels.
-Distribution Distortion:
-The original Task 2 data (left panel) shows a natural distribution centered around ages 16-17. After imputation, the data appears unrealistically homogeneous, with most students appearing to be exactly 17.65-17.66 years old.
-Statistical Consequences:</p>
-<p>Variance explosion: Increased from 1.52 to 112.20 - a 74x increase
-Standard deviation: Increased from 1.23 to 10.59 - an 8.6x increase
-Max value change: From 22 to 170 years (likely an impossible outlier that wasn't cleaned)</p>
-<p><strong>Critical Issue:</strong>
-The massive variance increase suggests serious data quality problems in the original dataset, including extreme outliers (age = 170) that should have been cleaned before imputation. The choice between mean vs. median is irrelevant when such severe outliers exist.</p>
-<p><strong>Recommendation:</strong>
-We need to clean impossible age values (&gt;100) before any imputation analysis.</p>
+<p>First, both imputation methods create an extreme spike at approximately age 17-18, with over 600+ observations concentrated at this single value. This artificial concentration completely dominates the distribution, as seen in the middle and right panels. This demonstrates a limitation of both methods: <em>Dramatic Spike Effect:</em>, which creates artificial peaks in the data distribution (Allison, 2009).</p>
+<p>Second, the cleaned data from task 2 shows a natural distribution centered around ages 16-17. For imputed data, however, the data appear unrealistically homogeneous, with most students appearing to be exactly 17.65-17.66 years old, demonstrating distribution distortion (Lee and Carlin, 2010).</p>
+<p>This leads to some statistical consequences, including Variance explosion (74x increase) and <strong>8.6x increase</strong> in Standard deviation. Simiarly, the maax value change from 22 to 170 years, indicating serious data quality problems in the original dataset, including extreme outliers (age = 170) that should have been cleaned before imputation. The choice between mean vs. median is irrelevant when such severe outliers exist.</p>
 </div>
 </div>
 </div>
@@ -9031,10 +8879,8 @@ We need to clean impossible age values (&gt;100) before any imputation analysis.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Answer:</strong></p>
-<p>Yes, outliers significantly affect standard deviation. Standard deviation measures the spread of data around the mean. Since it's calculated using squared differences from the mean, extreme values (outliers) have a disproportionately large impact.For example, in our age column:</p>
-<p>Without outliers (original Task 2): std = 1.23
-With outliers present: std = 10.59 (8.6x increase)
-A single extreme value like age = 170 dramatically inflates the standard deviation, making it unreliable as a measure of typical variability. This is why the median and interquartile range (IQR) are preferred for datasets with outliers - they are robust statistics that aren't influenced by extreme values.</p>
+<p>Outliers significantly affect standard deviation. Standard deviation measures the spread of data around the mean. Since it's calculated using squared differences from the mean, extreme values (outliers) have a disproportionately large impact. For example, in our age column (data_cleaned), without outliers, the std = 1.23, but with outliers present: std = 10.59 (8.6x increase)
+A single extreme value like age = 170 dramatically inflates the standard deviation, making it unreliable as a measure of typical variability (Allison, 2009). This is why the median and interquartile range (IQR) are preferred for datasets with outliers - they are robust statistics that aren't influenced by extreme values.</p>
 </div>
 </div>
 </div>
@@ -9054,26 +8900,18 @@ A single extreme value like age = 170 dramatically inflates the standard deviati
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Answer</strong></p>
-<p>Outliers should NOT be removed in the following situations:</p>
+<p><strong>Answer</strong>
+According to Frost (2024), there are several outliers that should not be removed:</p>
 <ul>
-<li>Legitimate Data Points: When the outlier represents a real, valid observation rather than a measurement error</li>
-</ul>
-<p>Eg. A 22-year-old student in high school is unusual but possible (repeated grades, late enrollment)</p>
-<ul>
+<li>Legitimate Data Points: When the outlier represents a real, valid observation rather than a measurement error
+Eg. A 22-year-old student in high school is unusual but possible (repeated grades, late enrollment)</li>
 <li>Small Sample Sizes: Removing outliers from small datasets can eliminate meaningful variation and reduce statistical power</li>
-<li>Scientific Discovery: Outliers can reveal important phenomena or new insights</li>
+<li>Natural Variation: When outliers are part of the genuine population distribution
+Eg. In income data, billionaires are extreme outliers but represent real economic inequality</li>
+<li>Domain Requirements: When the analysis specifically requires understanding extreme cases
+Eg. Risk assessment or fraud detection needs to study outliers
+However, it is most effective to leverage sensitivity analysis, in which data is analyzed both with and without outliers to understand their impact, rather than automatically removing them (Thabane et al. 2013).</li>
 </ul>
-<p>Eg. An unusually high number of absences might indicate systemic issues worth investigating</p>
-<ul>
-<li>Natural Variation: When outliers are part of the genuine population distribution</li>
-</ul>
-<p>Eg. In income data, billionaires are extreme outliers but represent real economic inequality</p>
-<ul>
-<li>Domain Requirements: When the analysis specifically requires understanding extreme cases</li>
-</ul>
-<p>Eg. Risk assessment or fraud detection needs to study outliers</p>
-<p>Best practice: Analyze data both with and without outliers to understand their impact, rather than automatically removing them.</p>
 </div>
 </div>
 </div>
@@ -9097,48 +8935,17 @@ A single extreme value like age = 170 dramatically inflates the standard deviati
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>====================================================================================================
-OUTLIER DETECTION ANALYSIS - METHOD 1: Interquartile Range (IQR)
-====================================================================================================
+<pre>
+================================================================================
+METHOD 1: IQR METHOD - OUTLIER DETECTION SUMMARY
+================================================================================
+Variable   Q1   Q3  IQR  Lower Bound  Upper Bound  Outliers Outlier %  Min Outlier  Max Outlier
+     age 16.0 18.0  2.0         13.0         21.0         1     0.15%         22.0         22.0
+absences  0.0  6.0  6.0         -9.0         15.0        22     3.38%         16.0         32.0
+      G1 10.0 13.0  3.0          5.5         17.5        17     2.62%          0.0         19.0
+      G2 10.0 13.0  3.0          5.5         17.5        26     4.00%          0.0         19.0
+      G3 10.0 14.0  4.0          4.0         20.0        16     2.46%          0.0          1.0
 
-====================================================================================================
-METHOD 1: IQR METHOD (Outliers are values outside Q1 - 1.5×IQR and Q3 + 1.5×IQR)
-====================================================================================================
-
-AGE:
-  Q1: 16.00 | Q3: 18.00 | IQR: 2.00
-  Lower bound: 13.00 | Upper bound: 21.00
-  Number of outliers: 1 (0.15% of data)
-  Outlier values: [np.float64(22.0)]
-  Min outlier: 22.00 | Max outlier: 22.00
-
-ABSENCES:
-  Q1: 0.00 | Q3: 6.00 | IQR: 6.00
-  Lower bound: -9.00 | Upper bound: 15.00
-  Number of outliers: 22 (3.38% of data)
-  Outlier values: [np.int64(16), np.int64(18), np.int64(21), np.int64(22), np.int64(24), np.int64(26), np.int64(30), np.int64(32)]
-  Min outlier: 16.00 | Max outlier: 32.00
-
-G1:
-  Q1: 10.00 | Q3: 13.00 | IQR: 3.00
-  Lower bound: 5.50 | Upper bound: 17.50
-  Number of outliers: 17 (2.62% of data)
-  Outlier values: [np.float64(0.0), np.float64(4.0), np.float64(5.0), np.float64(18.0), np.float64(19.0)]
-  Min outlier: 0.00 | Max outlier: 19.00
-
-G2:
-  Q1: 10.00 | Q3: 13.00 | IQR: 3.00
-  Lower bound: 5.50 | Upper bound: 17.50
-  Number of outliers: 26 (4.00% of data)
-  Outlier values: [np.float64(0.0), np.float64(5.0), np.float64(18.0), np.float64(19.0)]
-  Min outlier: 0.00 | Max outlier: 19.00
-
-G3:
-  Q1: 10.00 | Q3: 14.00 | IQR: 4.00
-  Lower bound: 4.00 | Upper bound: 20.00
-  Number of outliers: 16 (2.46% of data)
-  Outlier values: [np.int64(0), np.int64(1)]
-  Min outlier: 0.00 | Max outlier: 1.00
 </pre>
 </div>
 </div>
@@ -9151,43 +8958,17 @@ G3:
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>====================================================================================================
-OUTLIER DETECTION ANALYSIS - METHOD 2: Z-SCORE
-====================================================================================================
+<pre>
+================================================================================
+METHOD 2: Z-SCORE METHOD - OUTLIER DETECTION SUMMARY (|Z-score| &gt; 3)
+================================================================================
+Variable      Mean  Std Dev  Outliers Outlier %  Min Outlier  Max Outlier Min Z-score Max Z-score
+     age 16.757387 1.231816         3     0.46%         21.0         22.0        3.45        4.26
+absences  3.729231 4.775765         9     1.38%         21.0         32.0        3.62        5.92
+      G1 11.381026 2.765398         1     0.15%          0.0          0.0        4.12        4.12
+      G2 11.586687 2.930366         7     1.08%          0.0          0.0        3.96        3.96
+      G3 11.924615 3.242939        16     2.46%          0.0          1.0        3.37        3.68
 
-====================================================================================================
-METHOD 2: Z-SCORE METHOD (Outliers are values with |Z-score| &gt; 3)
-====================================================================================================
-
-AGE:
-  Mean: 16.76 | Std Dev: 1.23
-  Number of outliers: 3 (0.46% of data)
-  Outlier values: [np.float64(21.0), np.float64(22.0)]
-  Z-scores range: 3.45 to 4.26
-
-ABSENCES:
-  Mean: 3.73 | Std Dev: 4.78
-  Number of outliers: 9 (1.38% of data)
-  Outlier values: [np.int64(21), np.int64(22), np.int64(24), np.int64(26), np.int64(30), np.int64(32)]
-  Z-scores range: 3.62 to 5.92
-
-G1:
-  Mean: 11.38 | Std Dev: 2.77
-  Number of outliers: 1 (0.15% of data)
-  Outlier values: [np.float64(0.0)]
-  Z-scores range: 4.12 to 4.12
-
-G2:
-  Mean: 11.59 | Std Dev: 2.93
-  Number of outliers: 7 (1.08% of data)
-  Outlier values: [np.float64(0.0)]
-  Z-scores range: 3.96 to 3.96
-
-G3:
-  Mean: 11.92 | Std Dev: 3.24
-  Number of outliers: 16 (2.46% of data)
-  Outlier values: [np.int64(0), np.int64(1)]
-  Z-scores range: 3.37 to 3.68
 </pre>
 </div>
 </div>
@@ -9200,10 +8981,7 @@ G3:
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>====================================================================================================
-OUTLIER DETECTION ANALYSIS - METHOD 3: BOX PLOT VISUALIZATION
-====================================================================================================
-
+<pre>
 ====================================================================================================
 METHOD 3: BOX PLOT VISUALIZATION
 ====================================================================================================
@@ -9296,36 +9074,26 @@ absences            22                 9 3.38%     1.38%
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Outlier Detection Methods Explained</strong></p>
 <ul>
-<li><p><strong>IQR Method</strong>: Identifies outliers as values beyond Q1 - 1.5×IQR or Q3 + 1.5×IQR. This robust approach isn't influenced by extreme values and works well with skewed data.</p>
-</li>
-<li><p><strong>Z-Score Method:</strong> Flags values with |Z-score| &gt; 3 (beyond 3 standard deviations from mean). Assumes normal distribution and is more conservative, detecting only extreme outliers.</p>
-</li>
-<li><p><strong>Box Plot Visualization:</strong> Provides visual identification where individual points beyond whiskers represent outliers based on IQR method.</p>
-</li>
+<li><strong>IQR Method</strong>: Identifies outliers as values beyond Q1 - 1.5×IQR or Q3 + 1.5×IQR. This  approach isn't influenced by extreme values and works well with skewed data.</li>
+<li><strong>Z-Score Method:</strong> Flags values with |Z-score| &gt; 3 (beyond 3 standard deviations from mean). Assumes normal distribution and is more conservative, detecting only extreme outliers.</li>
+<li><strong>Box Plot Visualization:</strong> Provides visual identification where individual points beyond whiskers represent outliers based on IQR method.
+(Kang, 2013)</li>
 </ul>
 <p><strong>Interpretation for This Dataset</strong></p>
 <ul>
-<li><p><strong>Age:</strong> IQR detected 1 outlier (22), Z-score detected 3 (21-22). These represent older students - unusual but valid cases of repeated grades or late enrollment.</p>
-</li>
-<li><p><strong>Absences:</strong> IQR found 22 outliers (16-32 absences), Z-score found 9 (21-32). Both methods agree on 9 students with severe chronic absenteeism, representing real attendance crises.</p>
-</li>
-<li><p><strong>Grades (G1, G2, G3):</strong> Both methods consistently identify students with grades 0-1 as outliers, with perfect agreement on G3 (16 students). IQR additionally flags high performers (18-19), while Z-score focuses on complete failures (grade 0).</p>
-</li>
-<li><p><strong>Method Comparison:</strong> IQR is more sensitive, detecting 2.46-4.00% of data as outliers. Z-score is conservative, flagging 0.15-2.46%.</p>
-</li>
-<li><p>Strongest agreement occurs on G3 (both detect identical 16 outliers), indicating severe academic failure is a clear outlier pattern.</p>
-</li>
+<li><strong>Age:</strong> IQR detected 1 outlier (22), Z-score detected 3 (21-22). These represent older students - unusual but valid cases of repeated grades or late enrollment.</li>
+<li><strong>Absences:</strong> IQR found 22 outliers (16-32 absences), Z-score found 9 (21-32). Both methods agree on 9 students with severe chronic absenteeism, representing real attendance crises.</li>
+<li><strong>Grades (G1, G2, G3):</strong> Both methods consistently identify students with grades 0-1 as outliers, with perfect agreement on G3 (16 students). IQR additionally flags high performers (18-19), while Z-score focuses on complete failures (grade 0).</li>
+<li><strong>Method Comparison:</strong> IQR is more sensitive, detecting 2.46-4.00% of data as outliers. Z-score is conservative, flagging 0.15-2.46%.</li>
+<li>Strongest agreement occurs on G3 (both detect identical 16 outliers), indicating severe academic failure is a clear outlier pattern.</li>
 </ul>
 <p><strong>Recommendations</strong></p>
 <ul>
-<li><p>DO <strong>NOT</strong> remove any outliers. All detected values represent legitimate educational variation:</p>
-</li>
-<li><p>Older students are possible in secondary education
+<li>DO <strong>NOT</strong> remove any outliers (which are in allowed range). All detected values represent legitimate educational variation:</li>
+<li>Older students are possible in secondary education
 High absences reflect real student crises requiring intervention
-Extreme grades (both 0 and 18-19) represent actual performance spectrum</p>
-</li>
-<li><p>Use IQR for comprehensive analysis and Z-score to identify critical cases (grade 0, 30+ absences). Values flagged by both methods warrant immediate attention. These outliers provide crucial insights into at-risk students and shouldn't be deleted but rather investigated for targeted support interventions.</p>
-</li>
+Extreme grades (both 0 and 18-19) represent actual performance spectrum</li>
+<li>Use IQR for comprehensive analysis and Z-score to identify critical cases (grade 0, 30+ absences). Values flagged by both methods warrant immediate attention. These outliers provide crucial insights into at-risk students and shouldn't be deleted but rather investigated for targeted support interventions.</li>
 </ul>
 </div>
 </div>
@@ -9434,7 +9202,10 @@ Checking for required files...
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.2-Loading-and-Exploring-u.data">4.2 Loading and Exploring u.data<a class="anchor-link" href="#4.2-Loading-and-Exploring-u.data">¶</a></h2>
+<h2 id="4.2-Loading-and-Exploring-u.data">4.2 Loading and Exploring u.data<a class="anchor-link" href="#4.2-Loading-and-Exploring-u.data">¶</a></h2><p>The <code>u.data</code> file contains the core ratings information with 100,000 entries.</p>
+<p><strong>File Format:</strong> Tab-separated values<br/>
+<strong>Columns:</strong> user_id, item_id, rating, timestamp<br/>
+<strong>Encoding:</strong> latin-1</p>
 </div>
 </div>
 </div>
@@ -9447,19 +9218,6 @@ Checking for required files...
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>u.data (Ratings Data):
 Shape: (100000, 4)
-
-First 10 rows:
-   user_id  item_id  rating  timestamp
-0      196      242       3  881250949
-1      186      302       3  891717742
-2       22      377       1  878887116
-3      244       51       2  880606923
-4      166      346       1  886397596
-5      298      474       4  884182806
-6      115      265       2  881171488
-7      253      465       5  891628467
-8      305      451       3  886324817
-9        6       86       3  883603013
 
 Data types:
 user_id      int64
@@ -9489,7 +9247,10 @@ max       943.00000    1682.000000       5.000000  8.932866e+08
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.3-Loading-and-Exploring-u.item">4.3 Loading and Exploring u.item<a class="anchor-link" href="#4.3-Loading-and-Exploring-u.item">¶</a></h2>
+<h2 id="4.3-Loading-and-Exploring-u.item">4.3 Loading and Exploring u.item<a class="anchor-link" href="#4.3-Loading-and-Exploring-u.item">¶</a></h2><p>The <code>u.item</code> file contains metadata about each movie including title, release date, and genre classifications.</p>
+<p><strong>File Format:</strong> Pipe-separated values (|)<br/>
+<strong>Columns:</strong> movie_id, title, release_date, video_release_date, IMDb_URL, + 19 genre binary flags<br/>
+<strong>Encoding:</strong> latin-1</p>
 </div>
 </div>
 </div>
@@ -9502,57 +9263,6 @@ max       943.00000    1682.000000       5.000000  8.932866e+08
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>u.item (Movie Data):
 Shape: (1682, 24)
-
-First 10 rows:
-   movie_id                                              title release_date  \
-0         1                                   Toy Story (1995)  01-Jan-1995   
-1         2                                   GoldenEye (1995)  01-Jan-1995   
-2         3                                  Four Rooms (1995)  01-Jan-1995   
-3         4                                  Get Shorty (1995)  01-Jan-1995   
-4         5                                     Copycat (1995)  01-Jan-1995   
-5         6  Shanghai Triad (Yao a yao yao dao waipo qiao) ...  01-Jan-1995   
-6         7                              Twelve Monkeys (1995)  01-Jan-1995   
-7         8                                        Babe (1995)  01-Jan-1995   
-8         9                            Dead Man Walking (1995)  01-Jan-1995   
-9        10                                 Richard III (1995)  22-Jan-1996   
-
-   video_release_date                                           IMDb_URL  \
-0                 NaN  http://us.imdb.com/M/title-exact?Toy%20Story%2...   
-1                 NaN  http://us.imdb.com/M/title-exact?GoldenEye%20(...   
-2                 NaN  http://us.imdb.com/M/title-exact?Four%20Rooms%...   
-3                 NaN  http://us.imdb.com/M/title-exact?Get%20Shorty%...   
-4                 NaN  http://us.imdb.com/M/title-exact?Copycat%20(1995)   
-5                 NaN  http://us.imdb.com/Title?Yao+a+yao+yao+dao+wai...   
-6                 NaN  http://us.imdb.com/M/title-exact?Twelve%20Monk...   
-7                 NaN     http://us.imdb.com/M/title-exact?Babe%20(1995)   
-8                 NaN  http://us.imdb.com/M/title-exact?Dead%20Man%20...   
-9                 NaN  http://us.imdb.com/M/title-exact?Richard%20III...   
-
-   unknown  Action  Adventure  Animation  Children  ...  Fantasy  Film-Noir  \
-0        0       0          0          1         1  ...        0          0   
-1        0       1          1          0         0  ...        0          0   
-2        0       0          0          0         0  ...        0          0   
-3        0       1          0          0         0  ...        0          0   
-4        0       0          0          0         0  ...        0          0   
-5        0       0          0          0         0  ...        0          0   
-6        0       0          0          0         0  ...        0          0   
-7        0       0          0          0         1  ...        0          0   
-8        0       0          0          0         0  ...        0          0   
-9        0       0          0          0         0  ...        0          0   
-
-   Horror  Musical  Mystery  Romance  Sci-Fi  Thriller  War  Western  
-0       0        0        0        0       0         0    0        0  
-1       0        0        0        0       0         1    0        0  
-2       0        0        0        0       0         1    0        0  
-3       0        0        0        0       0         0    0        0  
-4       0        0        0        0       0         1    0        0  
-5       0        0        0        0       0         0    0        0  
-6       0        0        0        0       1         0    0        0  
-7       0        0        0        0       0         0    0        0  
-8       0        0        0        0       0         0    0        0  
-9       0        0        0        0       0         0    1        0  
-
-[10 rows x 24 columns]
 
 Data types:
 movie_id                int64
@@ -9594,7 +9304,9 @@ Column names:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.4-Merging-the-Datasets">4.4 Merging the Datasets<a class="anchor-link" href="#4.4-Merging-the-Datasets">¶</a></h2>
+<h2 id="4.4-Merging-the-Datasets">4.4 Merging the Datasets<a class="anchor-link" href="#4.4-Merging-the-Datasets">¶</a></h2><p>We will merge the ratings data with movie information to create a comprehensive dataset for analysis.</p>
+<p><strong>Join Strategy:</strong> Left join on <code>item_id</code> (ratings) = <code>movie_id</code> (movies)<br/>
+<strong>Expected Result:</strong> Each rating will be enriched with the corresponding movie's title and genre information</p>
 </div>
 </div>
 </div>
@@ -9608,68 +9320,43 @@ Column names:
 <pre>Merged Dataset:
 Shape: (100000, 28)
 
-First 10 rows:
-   user_id  item_id  rating  timestamp  movie_id  \
-0      196      242       3  881250949       242   
-1      186      302       3  891717742       302   
-2       22      377       1  878887116       377   
-3      244       51       2  880606923        51   
-4      166      346       1  886397596       346   
-5      298      474       4  884182806       474   
-6      115      265       2  881171488       265   
-7      253      465       5  891628467       465   
-8      305      451       3  886324817       451   
-9        6       86       3  883603013        86   
+First 5 rows:
+   user_id  item_id  rating  timestamp  movie_id                       title  \
+0      196      242       3  881250949       242                Kolya (1996)   
+1      186      302       3  891717742       302    L.A. Confidential (1997)   
+2       22      377       1  878887116       377         Heavyweights (1994)   
+3      244       51       2  880606923        51  Legends of the Fall (1994)   
+4      166      346       1  886397596       346         Jackie Brown (1997)   
 
-                                               title release_date  \
-0                                       Kolya (1996)  24-Jan-1997   
-1                           L.A. Confidential (1997)  01-Jan-1997   
-2                                Heavyweights (1994)  01-Jan-1994   
-3                         Legends of the Fall (1994)  01-Jan-1994   
-4                                Jackie Brown (1997)  01-Jan-1997   
-5  Dr. Strangelove or: How I Learned to Stop Worr...  01-Jan-1963   
-6                   Hunt for Red October, The (1990)  01-Jan-1990   
-7                            Jungle Book, The (1994)  01-Jan-1994   
-8                                      Grease (1978)  01-Jan-1978   
-9                     Remains of the Day, The (1993)  01-Jan-1993   
+  release_date  video_release_date  \
+0  24-Jan-1997                 NaN   
+1  01-Jan-1997                 NaN   
+2  01-Jan-1994                 NaN   
+3  01-Jan-1994                 NaN   
+4  01-Jan-1997                 NaN   
 
-   video_release_date                                           IMDb_URL  \
-0                 NaN    http://us.imdb.com/M/title-exact?Kolya%20(1996)   
-1                 NaN  http://us.imdb.com/M/title-exact?L%2EA%2E+Conf...   
-2                 NaN  http://us.imdb.com/M/title-exact?Heavyweights%...   
-3                 NaN  http://us.imdb.com/M/title-exact?Legends%20of%...   
-4                 NaN  http://us.imdb.com/M/title-exact?imdb-title-11...   
-5                 NaN  http://us.imdb.com/M/title-exact?Dr.%20Strange...   
-6                 NaN  http://us.imdb.com/M/title-exact?Hunt+for+Red+...   
-7                 NaN  http://us.imdb.com/M/title-exact?Jungle%20Book...   
-8                 NaN   http://us.imdb.com/M/title-exact?Grease%20(1978)   
-9                 NaN  http://us.imdb.com/M/title-exact?Remains%20of%...   
+                                            IMDb_URL  unknown  ...  Fantasy  \
+0    http://us.imdb.com/M/title-exact?Kolya%20(1996)        0  ...        0   
+1  http://us.imdb.com/M/title-exact?L%2EA%2E+Conf...        0  ...        0   
+2  http://us.imdb.com/M/title-exact?Heavyweights%...        0  ...        0   
+3  http://us.imdb.com/M/title-exact?Legends%20of%...        0  ...        0   
+4  http://us.imdb.com/M/title-exact?imdb-title-11...        0  ...        0   
 
-   unknown  ...  Fantasy  Film-Noir  Horror  Musical  Mystery  Romance  \
-0        0  ...        0          0       0        0        0        0   
-1        0  ...        0          1       0        0        1        0   
-2        0  ...        0          0       0        0        0        0   
-3        0  ...        0          0       0        0        0        1   
-4        0  ...        0          0       0        0        0        0   
-5        0  ...        0          0       0        0        0        0   
-6        0  ...        0          0       0        0        0        0   
-7        0  ...        0          0       0        0        0        1   
-8        0  ...        0          0       0        1        0        1   
-9        0  ...        0          0       0        0        0        0   
+   Film-Noir  Horror  Musical  Mystery  Romance  Sci-Fi  Thriller  War  \
+0          0       0        0        0        0       0         0    0   
+1          1       0        0        1        0       0         1    0   
+2          0       0        0        0        0       0         0    0   
+3          0       0        0        0        1       0         0    1   
+4          0       0        0        0        0       0         0    0   
 
-   Sci-Fi  Thriller  War  Western  
-0       0         0    0        0  
-1       0         1    0        0  
-2       0         0    0        0  
-3       0         0    1        1  
-4       0         0    0        0  
-5       1         0    1        0  
-6       0         1    0        0  
-7       0         0    0        0  
-8       0         0    0        0  
-9       0         0    0        0  
+   Western  
+0        0  
+1        0  
+2        0  
+3        1  
+4        0  
 
-[10 rows x 28 columns]
+[5 rows x 28 columns]
 
 Column names (28 total):
 ['user_id', 'item_id', 'rating', 'timestamp', 'movie_id', 'title', 'release_date', 'video_release_date', 'IMDb_URL', 'unknown', 'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
@@ -9689,7 +9376,7 @@ Unmatched ratings: 0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.5-Data-Quality-Assessment">4.5 Data Quality Assessment<a class="anchor-link" href="#4.5-Data-Quality-Assessment">¶</a></h2>
+<h2 id="4.5-Data-Quality-Assessment">4.5 Data Quality Assessment<a class="anchor-link" href="#4.5-Data-Quality-Assessment">¶</a></h2><p>We will perform comprehensive data quality checks on the merged dataset to identify potential issues.</p>
 </div>
 </div>
 </div>
@@ -9750,53 +9437,8 @@ Name: count, dtype: int64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.6-Data-Preparation-Summary">4.6 Data Preparation Summary<a class="anchor-link" href="#4.6-Data-Preparation-Summary">¶</a></h2><p><strong>Steps Completed:</strong></p>
-<ol>
-<li><p><strong>Data Retrieval:</strong></p>
-<ul>
-<li>Downloaded MovieLens 100K dataset from GroupLens</li>
-<li>Extracted u.data (ratings) and u.item (movie information) files</li>
-</ul>
-</li>
-<li><p><strong>Data Loading:</strong></p>
-<ul>
-<li>Loaded u.data with appropriate column names (user_id, item_id, rating, timestamp)</li>
-<li>Loaded u.item with movie details including title, release date, and genre flags</li>
-</ul>
-</li>
-<li><p><strong>Data Merging:</strong></p>
-<ul>
-<li>Successfully merged ratings and movie information using item_id/movie_id</li>
-<li>Left join ensured all ratings were preserved</li>
-<li>Verified merge quality (no unmatched records)</li>
-</ul>
-</li>
-<li><p><strong>Data Quality Checks:</strong></p>
-<ul>
-<li>Checked for missing values (some release dates missing, which is acceptable)</li>
-<li>Verified no duplicate ratings</li>
-<li>Examined rating distribution (1-5 scale)</li>
-<li>Identified most popular movies by rating count</li>
-</ul>
-</li>
-<li><p><strong>Potential Data Issues Identified:</strong></p>
-<ul>
-<li>Missing release dates for some movies</li>
-<li>Video release dates largely empty (not used in this era)</li>
-<li>Timestamps are Unix epoch format (could convert to datetime)</li>
-</ul>
-</li>
-<li><p><strong>Next Steps for Data Science Pipeline:</strong></p>
-<ul>
-<li>Convert timestamps to readable date format</li>
-<li>Analyze genre preferences</li>
-<li>Examine temporal patterns in ratings</li>
-<li>Build user-movie matrices for recommendation systems</li>
-<li>Analyze rating bias (some users rate higher/lower on average)</li>
-</ul>
-</li>
-</ol>
-<p><strong>Dataset is now ready for further analysis and modeling.</strong></p>
+<h2 id="4.6-Data-Preparation-Summary">4.6 Data Preparation Summary<a class="anchor-link" href="#4.6-Data-Preparation-Summary">¶</a></h2><p>I completed 6 steps. First, I downloaded MovieLens 100K dataset from GroupLens and extracted u.data (ratings) and u.item (movie information) files (data retrieval). Second, I loaded u.data with appropriate column names (user_id, item_id, rating, timestamp) and loaded u.item with movie details including title, release date, and genre flags (data loading). Third, I merge the data of ratings and movie information using item_id/movie_id, then the left join ensured all ratings were preserved (data merge). Fourth, I check the quality by looking at missing values, duplicate ratings, rating distribution (1-5 scale), and identified most popular movies by rating count.</p>
+<p>As explored, I found that there are missing release dates for some movies, video release dates largely empty, and Timestamps are Unix epoch format (must be converted to datetime). For the next steps, I will convert timestamps to readable date format and analyze genre preferences. After that, I will build user-movie matrices for recommendation systems.</p>
 </div>
 </div>
 </div>
@@ -9806,57 +9448,18 @@ Name: count, dtype: int64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<hr/>
-<h1 id="5.-Conclusion">5. Conclusion<a class="anchor-link" href="#5.-Conclusion">¶</a></h1><h2 id="Summary-of-Key-Findings">Summary of Key Findings<a class="anchor-link" href="#Summary-of-Key-Findings">¶</a></h2><h3 id="Data-Preparation:">Data Preparation:<a class="anchor-link" href="#Data-Preparation:">¶</a></h3><ul>
-<li>Successfully loaded and cleaned the student performance dataset</li>
-<li>Identified and handled missing values (represented as '-' in grade columns)</li>
-<li>Detected and addressed data quality issues (whitespace, impossible values)</li>
-<li>Documented all data transformations and changes</li>
-</ul>
-<h3 id="Data-Exploration:">Data Exploration:<a class="anchor-link" href="#Data-Exploration:">¶</a></h3><ul>
-<li>Analyzed three variable types: nominal (Mjob), ordinal (Medu), numerical (G3)</li>
-<li>Explored relationships between study time and grades, absences and grades, and mother's education and student performance</li>
-<li>Generated scatter matrix showing strong correlations between grade periods (G1, G2, G3)</li>
-<li>Created comprehensive visualizations for understanding data patterns</li>
-</ul>
-<h3 id="Missing-Values-Analysis:">Missing Values Analysis:<a class="anchor-link" href="#Missing-Values-Analysis:">¶</a></h3><ul>
-<li>Implemented mean imputation (student_fix1.csv) and median imputation (student_fix2.csv)</li>
-<li>Compared impact of different imputation methods on data distribution</li>
-<li>Demonstrated how imputation affects central tendency and variability</li>
-</ul>
-<h3 id="Outlier-Analysis:">Outlier Analysis:<a class="anchor-link" href="#Outlier-Analysis:">¶</a></h3><ul>
-<li>Explained the effect of outliers on standard deviation</li>
-<li>Discussed scenarios when outliers should be retained</li>
-<li>Applied IQR and Z-score methods to detect outliers</li>
-<li>Visualized outliers using box plots for all numerical variables</li>
-</ul>
-<h3 id="External-Data-Integration:">External Data Integration:<a class="anchor-link" href="#External-Data-Integration:">¶</a></h3><ul>
-<li>Successfully retrieved and merged MovieLens 100K dataset</li>
-<li>Performed initial data quality assessment</li>
-<li>Prepared data for potential recommendation system analysis</li>
-</ul>
-<h2 id="Lessons-Learned:">Lessons Learned:<a class="anchor-link" href="#Lessons-Learned:">¶</a></h2><ol>
-<li><strong>Data Quality is Paramount:</strong> Small issues like extra whitespace or non-standard missing indicators can significantly impact analysis</li>
-<li><strong>Context Matters:</strong> Domain knowledge is essential for making appropriate decisions about outliers and missing data</li>
-<li><strong>Multiple Perspectives:</strong> Using various visualization types (histograms, box plots, scatter plots) provides comprehensive understanding</li>
-<li><strong>Trade-offs in Imputation:</strong> All imputation methods have limitations; understanding their impact is crucial</li>
-<li><strong>Documentation is Key:</strong> Tracking all data changes ensures reproducibility and transparency</li>
-</ol>
-<h2 id="Future-Work:">Future Work:<a class="anchor-link" href="#Future-Work:">¶</a></h2><ul>
-<li>Apply machine learning models to predict student performance</li>
-<li>Conduct deeper analysis of factors influencing academic success</li>
-<li>Build recommendation system using MovieLens data</li>
-<li>Explore advanced imputation techniques (KNN, multiple imputation)</li>
-<li>Investigate causal relationships using appropriate statistical methods</li>
-</ul>
-<hr/>
-<p><strong>References:</strong></p>
-<ul>
-<li>UCI Machine Learning Repository - Student Performance Dataset: <a href="https://doi.org/10.24432/C5TG7T">https://doi.org/10.24432/C5TG7T</a></li>
-<li>MovieLens 100K Dataset: <a href="https://grouplens.org/datasets/movielens/100k/">https://grouplens.org/datasets/movielens/100k/</a></li>
-</ul>
-<hr/>
-<p><strong>End of Report</strong></p>
+<h1 id="5.-Reference">5. Reference<a class="anchor-link" href="#5.-Reference">¶</a></h1><p>Allison, P. D. (2009). Missing data. In R. E. Millsap &amp; A. Maydeu-Olivares (Eds.), The SAGE handbook of quantitative methods in psychology (pp. 72-89). Sage Publications.</p>
+<p>Berkowitz, R., Moore, H., Astor, R. A., &amp; Benbenishty, R. (2017). A research synthesis of the associations between socioeconomic background, inequality, school climate, and academic achievement. <em>Review of Educational Research</em>, 87(2), 425-469. <a href="https://doi.org/10.3102/0034654316669821">https://doi.org/10.3102/0034654316669821</a></p>
+<p>Brookhart, S. M., Guskey, T. R., Bowers, A. J., McMillan, J. H., Smith, J. K., Smith, L. F., Stevens, M. T., &amp; Welsh, M. E. (2016). A century of grading research: Meaning and value in the most common educational measure. <em>Review of Educational Research</em>, 86(4), 803-848. <a href="https://doi.org/10.3102/0034654316672069">https://doi.org/10.3102/0034654316672069</a></p>
+<p>Credé, M., &amp; Kuncel, N. R. (2008). Study habits, skills, and attitudes: The third pillar supporting collegiate academic performance. <em>Perspectives on Psychological Science</em>, 3(6), 425-453. <a href="https://doi.org/10.1111/j.1745-6924.2008.00089.x">https://doi.org/10.1111/j.1745-6924.2008.00089.x</a></p>
+<p>Credé, M., Roch, S. G., &amp; Kieszczynka, U. M. (2010). Class attendance in college: A meta-analytic review of the relationship of class attendance with grades and student characteristics. <em>Review of Educational Research</em>, 80(2), 272-295. <a href="https://doi.org/10.3102/0034654310362998">https://doi.org/10.3102/0034654310362998</a></p>
+<p>Frost, J. (2024, April 25). Guidelines for removing and handling outliers in data. Statistics By Jim. <a href="https://statisticsbyjim.com/basics/remove-outliers/">https://statisticsbyjim.com/basics/remove-outliers/</a></p>
+<p>Hartas, D. (2011). Families' social backgrounds matter: Socio-economic factors, home learning and young children's language, literacy and social outcomes. <em>British Educational Research Journal</em>, 37(6), 893-914. <a href="https://doi.org/10.1080/01411926.2010.506945">https://doi.org/10.1080/01411926.2010.506945</a></p>
+<p>Jonge, E. de, &amp; Loo, M. van der (2013). An introduction to data cleaning with R. <em>Statistics Netherlands Discussion Paper</em> (201313). Statistics Netherlands, The Hague. <a href="https://www.cbs.nl/en-gb/background/2013/13/an-introduction-to-data-cleaning-with-r">https://www.cbs.nl/en-gb/background/2013/13/an-introduction-to-data-cleaning-with-r</a></p>
+<p>Kang, H. (2013). The prevention and handling of the missing data. Korean Journal of Anesthesiology, 64(5), 402-406. <a href="https://doi.org/10.4097/kjae.2013.64.5.402">https://doi.org/10.4097/kjae.2013.64.5.402</a></p>
+<p>Lee, K. J., &amp; Carlin, J. B. (2010). Multiple imputation for missing data: Fully conditional specification versus multivariate normal imputation. American Journal of Epidemiology, 171(5), 624-632. <a href="https://doi.org/10.1093/aje/kwp425">https://doi.org/10.1093/aje/kwp425</a></p>
+<p>Little, R. J., &amp; Rubin, D. B. (2019). Statistical analysis with missing data (3rd ed.). John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9781119482260">https://doi.org/10.1002/9781119482260</a></p>
+<p>Thabane, L., Mbuagbaw, L., Zhang, S., Samaan, Z., Marcucci, M., Ye, C., Thabane, M., Giangregorio, L., Dennis, B., Kosa, D., Debono, V. B., Dillenburg, R., Fruci, V., Bawor, M., Lee, J., Wells, G., &amp; Goldsmith, C. H. (2013). A tutorial on sensitivity analyses in clinical trials: The what, why, when and how. BMC Medical Research Methodology, 13, 92. <a href="https://doi.org/10.1186/1471-2288-13-92">https://doi.org/10.1186/1471-2288-13-92</a></p>
 </div>
 </div>
 </div>
